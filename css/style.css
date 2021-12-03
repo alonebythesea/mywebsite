@@ -1,0 +1,129 @@
+body {
+	background: rgb(0, 0, 0) no-repeat center center fixed;
+	background-size: cover;
+	padding: 0px;
+	margin: 0px;
+	font-family: "Roboto Mono", monospace;
+	-webkit-text-size-adjust: none;
+}
+footer {
+  text-align: center;
+  position:absolute;
+  bottom:0;
+  width:100%;
+  color: white;
+}
+.content-pad {
+	height: 24px;
+	clear: both;
+}
+.main_content {
+	position: absolute;
+	left: 0px;
+	right: 320px;
+	padding-bottom: 20px;
+}
+.sidebar {
+	position: absolute;
+	right: 0px;
+	width: 320px;
+}
+.window {
+	font-family: "Roboto Mono", monospace;
+	padding: 0px;
+	margin: 0px;
+	border-style: solid;
+	border-width: 28px 3px 1px;
+	-moz-border-image: url(../images/inactive-window.png) 28 3 1 stretch;
+	-webkit-border-image: url(../images/inactive-window.png) 28 3 1 stretch;
+	-o-border-image: url(../images/inactive-window.png) 28 3 1 stretch;
+	border-image: url(../images/inactive-window.png) 28 3 1 stretch;
+	-webkit-box-shadow: 0px 0px 2px 0px rgba(255, 255, 255, 0.75);
+	-moz-box-shadow: 0px 0px 2px 0px rgba(255, 255, 255, 0.75);
+	box-shadow: 0px 0px 2px 0px rgba(255, 251, 251, 0.75);
+	-webkit-border-top-left-radius: 3px;
+	-webkit-border-top-right-radius: 3px;
+	-moz-border-radius-topleft: 3px;
+	-moz-border-radius-topright: 3px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+}
+.window:hover {
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(250, 250, 250, 0.75);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.75);
+	box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.75);
+	-moz-border-image: url(../images/active-window.png) 28 3 1 stretch;
+	-webkit-border-image: url(../images/active-window.png) 28 3 1 stretch;
+	-o-border-image: url(../images/active-window.png) 28 3 1 stretch;
+	border-image: url(../images/active-window.png) 28 3 1 stretch;
+}
+.window>.title {
+	margin-top: -20px;
+	position: relative;
+	height: 20px;
+	padding: 0px;
+	left: 0px;
+	right: 0px;
+	text-align: center;
+	color: rgb(94,98,99);
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 12px;
+	text-shadow: none !important;
+}
+.window>.title>.close {
+	position: absolute;
+	right: 12px;
+	top: 3px;
+	background: url(../images/close-inactive.png);
+	width: 8px;
+	height: 8px;
+}
+.window:hover>.title>.close {
+	background: url(../images/close-active.png) !important;
+}
+.window:hover>.title {
+	color: rgb(236,239,241);
+}
+.window>.content {
+	margin-left: -2px;
+	margin-right: -2px;
+}
+.window>.content.terminal {
+	background-color: rgba(0,0,0,0.75);
+	font-size: 16px;
+	font-family: "Roboto Mono", monospace;
+	color: rgb(255,255,255);
+}
+.window>.content.other {
+	background-color: rgb(255,255,255,0.45);
+	text-align: center;
+	color: rgb(0,0,0);
+	font-size: 14px;
+}
+.window>.content.other a {
+	color: #305fe5;
+}
+.command {
+	color: #33a2e6;
+}
+.variable {
+	color: #e62b7f;
+}
+.dir {
+	color: #ffffff;
+}
+.blink {
+	animation: blinker 1s step-start infinite;
+}
+@keyframes blinker {
+	50% {
+		opacity: 0;
+	}
+}
+a {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
