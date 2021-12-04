@@ -12,7 +12,15 @@ jobs:
     steps:
       - name: Chekout
         uses: actions/checkout@v2
- 
+
       - name: Copy files to primary bucket with the AWS CLI
         run: |
-          aws s3 sync ./deploy s3://${{ secrets.S3_BUCKET }}
+          aws s3 sync --acl public-read --follow-symlinks --delete ./deploy s3://${{ secrets.S3_BUCKET }}
+
+      - name: Copy files to secondary bucket with the AWS CLI
+        run: |
+          aws s3 sync --acl public-read --follow-symlinks --delete ./deploy s3://${{ secrets.S3_BUCKET_2 }}
+
+      - name: Change metadata for html pages
+        run: |
+          aws cp  --acl public-read --follow-symlinks --delete --content-type text/html ./deploy/cv ./deploy/404 s3://${{ secrets.S3_BUCKET }}
