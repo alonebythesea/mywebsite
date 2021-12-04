@@ -16,7 +16,3 @@ jobs:
             bucket: ${{ secrets.S3_BUCKET }}
             bucket-region: ${{ secrets.S3_BUCKET_REGION }}
             dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
-            private: true
-            delete-removed: true
-            invalidation: /
-            no-cache: true
