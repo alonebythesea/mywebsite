@@ -21,6 +21,18 @@ jobs:
         run: |
           aws s3 sync --acl public-read --follow-symlinks --delete ./deploy s3://${{ secrets.S3_BUCKET_2 }}
 
-      - name: Change metadata for html pages
+      - name: Change metadata for html pages in primary bucket
         run: |
-          aws s3 cp --acl public-read --content-type text/html ./deploy/cv s3://${{ secrets.S3_BUCKET }}
+          aws s3 sync --acl public-read --content-type text/html ./pages s3://${{ secrets.S3_BUCKET }}
+
+      - name: Change metadata for html pages in secondary bucket
+        run: |
+          aws s3 sync --acl public-read --content-type text/html ./pages s3://${{ secrets.S3_BUCKET_2 }}
+
+      - name: Invalidate primary distribution
+        run: |
+          aws cloudfront create-invalidation --distribution-id ${{ secret.CLOUDFRONT_DISTRIBUTION_ID }}
+
+      - name: Invalidate secondary distribution
+        run: |
+          aws cloudfront create-invalidation --distribution-id ${{ secret.CLOUDFRONT_DISTRIBUTION_ID_2 }}
