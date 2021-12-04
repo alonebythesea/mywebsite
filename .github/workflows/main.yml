@@ -23,4 +23,4 @@ jobs:
 
       - name: Change metadata for html pages
         run: |
-          aws cp  --acl public-read --follow-symlinks --delete --content-type text/html ./deploy/cv ./deploy/404 s3://${{ secrets.S3_BUCKET }}
+          aws s3 cp --acl public-read --follow-symlinks --delete --content-type text/html ./deploy/cv ./deploy/404 s3://${{ secrets.S3_BUCKET }}
