@@ -9,18 +9,9 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     steps:
-      - uses: actions/checkout@v2
-      - name: S3 Deploy
-        uses: Reggionick/s3-deploy@v3.1.1
-        with:
-            folder: ./deploy
-            bucket: ${{ secrets.S3_BUCKET }}
-            bucket-region: ${{ secrets.S3_BUCKET_REGION }}
-            dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
-      - name: S3 Deploy
-        uses: Reggionick/s3-deploy@v3.1.1
-        with:
-            folder: ./deploy
-            bucket: ${{ secrets.S3_BUCKET_2 }}
-            bucket-region: ${{ secrets.S3_BUCKET_REGION }}
-            dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID_2 }}
+      - name: Chekout
+        uses: actions/checkout@v2
+ 
+      - name: Copy files to primary bucket with the AWS CLI
+        run: |
+          aws s3 sync ./deploy s3://${{ secrets.S3_BUCKET }}
