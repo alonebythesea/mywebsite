@@ -1,2 +1,2 @@
 # crysh.cc
-My website templating and styling.
+My website markup and styling.
