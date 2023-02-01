@@ -29,6 +29,6 @@ jobs:
         run: |
           aws s3 sync --acl public-read --content-type text/html ./pages s3://${{ secrets.S3_BUCKET_2 }}
 
-      - name: Invalidate primary distribution
+      - name: Invalidate cloudfront distribution
         run: |
           aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
